@@ -3,17 +3,20 @@
 using namespace std;
 
 int main() {
-    long long int n, f;
+    int n, f;
     cin >> n >> f;
-    long long int plan[n][2];
-    long long int products[n];
+    int products[n];
     for (int i = 0; i < n; i++) {
-        cin >> plan[i][0] >> plan[i][1];
-        products[i] = min(plan[i][0], plan[i][1]);
+        int k, l;
+        cin >> k >> l;
+        products[i] = min(k*2, l);
     }
-    long long int greatest = 0;
+    int sum = 0;
     sort(products, products + n);
-    for (int i = n-1; i > n-1-f; i++) {
-        cout << products[i];
+    for (int i = n-1; i > n-1-f; i--) {
+        sum += products[i];
     }
+    
+    cout << sum;
+    return 1;
 }
