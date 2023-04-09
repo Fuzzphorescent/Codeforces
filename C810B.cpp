@@ -1,22 +1,26 @@
 #include<iostream>
-#include <algorithm>
+#include<algorithm>
 using namespace std;
 
 int main() {
-    int n, f;
+    long long int n, f, sum = 0;
     cin >> n >> f;
-    int products[n];
-    for (int i = 0; i < n; i++) {
-        int k, l;
+    long long int sellout[n];
+    
+    for (long long int i = 0; i < n; i++) {
+        long long int k, l;
         cin >> k >> l;
-        products[i] = min(k*2, l);
+        long long int reg = min(k,l);
+        sum += reg;
+        sellout[i] = min(k*2, l) - reg;
     }
-    int sum = 0;
-    sort(products, products + n);
-    for (int i = n-1; i > n-1-f; i--) {
-        sum += products[i];
+    
+    sort(sellout, sellout + n);
+    
+    for (long long int i = n-1; i > n-f-1; i--) {
+        sum += sellout[i];
     }
     
     cout << sum;
-    return 1;
+    return 0;
 }
